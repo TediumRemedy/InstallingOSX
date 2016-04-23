@@ -12,4 +12,59 @@ In config.plist only enable NVidia injector (to make GT 220 work), no boot argum
 
 Install ALC 887 from *https://github.com/toleda*, having mounted the EFI partition. Make sure you are using Audio ID 1 (this one worked for me, other ids werent stable with MainStage). 
 
-That's all.
+Part of Clover's config.plist to change
+
+
+```
+		......(here goes GUI section of the config.plist that we need to change)....
+		.....note that keys that start with # are commented.....
+		<key>Custom</key>
+		<dict>
+			<key>Entries</key>
+			<array>
+				<dict>
+					<key>Disabled</key>
+					<false/>
+					<key>FullTitle</key>
+					<string>OS X</string>
+					<key>Hidden</key>
+					<false/>
+					<key>Type</key>
+					<string>OSX</string>
+					<key>Volume</key>
+					<string>###here goes volume id###</string>
+					<key>VolumeType</key>
+					<string>Internal</string>
+				</dict>
+			</array>
+			<key>Legacy</key>
+			<array>
+				<dict>
+					<key>Disabled</key>
+					<false/>
+					<key>FullTitle</key>
+					<string>Windows</string>
+					<key>Hidden</key>
+					<false/>
+					<key>Title</key>
+					<string>Windows</string>
+					<key>Type</key>
+					<string>Windows</string>
+					<key>Volume</key>
+					<string>###windows volume id###</string>
+					<key>VolumeType</key>
+					<string>Internal</string>
+				</dict>
+			</array>
+		</dict>
+		<key>Hide</key>
+		<array>
+			<string>HD(1,GPT,###idtohide###)</string>
+			<string>HD(3,GPT,###someotheridtohide###)</string>
+		</array>
+		<key>ScreenResolution</key>
+		<string>1920x1200</string>
+		<key>Theme</key>
+		<string>random</string>
+	</dict>
+```
